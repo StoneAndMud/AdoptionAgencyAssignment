@@ -1,0 +1,17 @@
+{% extends 'base.j2' %}
+{% block title %}Pets{% endblock %}
+{% block content %}
+<h1>Pets</h1>
+<div class="content">
+    {% for p in pets if p.available == True %}
+    <div class="pet_container">
+        <img src="{{p.photo_url}}" alt="image of {{p.name}} a {{p.species}}" width="600" height="500"></img>
+        <a href="/{{p.id}}">{{p.name}}</a>
+        {% if p.available %} <b> is available!</b> {% endif %}
+    </div>
+    {% else %}
+    <div class="col-12">No pets yet.</div>
+    {% endfor %}
+</div>
+<a href="/add">Add a Pet</a>
+{% endblock %}
